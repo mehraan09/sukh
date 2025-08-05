@@ -29,7 +29,7 @@ export default function Home() {
     <main className="min-h-screen bg-gradient-to-br from-purple-100 to-pink-100 px-4 py-10">
       <div className="mx-auto max-w-xl rounded-2xl bg-white/70 p-8 shadow-2xl backdrop-blur-md">
         <h1 className="mb-6 text-center font-serif text-3xl font-extrabold text-pink-600 drop-shadow-md">
-          Out of Million Reasons Here are Some !!
+          Out of Million Reasons we love eather other. Here are Some !!
         </h1>
 
         {loading ? (
