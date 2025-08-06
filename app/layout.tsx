@@ -13,8 +13,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "A.S. – A Love Story",
-  description: "A heartfelt expression of Akash's love for Sukh – a story written in code and care.",
+  title: "A.S. – 01 10 27 11 ",
+  description: "Shutt uppp and Love Akash.",
   openGraph: {
     title: "A.S. – Sukh ❤️ Akash",
     description:
