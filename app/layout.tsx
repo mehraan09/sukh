@@ -13,8 +13,20 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "1 10 27 11",
-  description: "Shutt uppp and love me",
+  title: "A.S",
+  description: "Shuttt Upp Sukh and Love Akash",
+  openGraph: {
+    title: "A.S",
+    description: "Shuttt Upp Sukh and Love Akash",
+    images: [
+      {
+        url: "/sukh.png", 
+        width: 1200,
+        height: 630,
+        alt: "A.S Website Preview",
+      },
+    ],
+  },
 };
 
 export default function RootLayout({
