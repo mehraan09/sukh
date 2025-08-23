@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react'
 import Image from 'next/image'
+import { handleLogin } from '@/app/lib/handleLogin'
 
 type User = 'Akash' | 'Sukh'
 
@@ -11,12 +12,6 @@ type Reason = {
   author: User
   createdAt: string
 }
-
-const PASSWORDS: Record<string, User> = {
-  [process.env.PASSWORD_AKASH || '']: 'Akash',
-  [process.env.PASSWORD_SUKH || '']: 'Sukh',
-}
-
 
 
 export default function Home() {
@@ -78,31 +73,18 @@ export default function Home() {
     setSending(false)
   }
 
-const handleLogin = () => {
-
-  if (password === process.env.PASSWORD_CHANGE) {
-    alert('Your password has been changed!')
-    return
+  const logItIn = async ()=>{
+    const a = await handleLogin(password)
+    if(a=="prevSuk"){
+      alert("Your Password has been Changed ! ")
+    }else if(a=='Incorrect'){
+      alert("Incorrect Password ")
+    } else {
+      setAuthor(a)
+      setIsAuthenticated(true)
+    }
   }
 
-  if (password === process.env.PASSWORD_SUKH) {
-    fetch('/api/ifshe', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ message: "Thank you" }),
-    }).catch(err => console.error("Error in /api/ifshe:", err))
-  }
-
-  const foundAuthor = PASSWORDS[password]
-  if (foundAuthor) {
-    const expiresAt = Date.now() + 24 * 60 * 60 * 1000
-    localStorage.setItem('authData', JSON.stringify({ author: foundAuthor, expiresAt }))
-    setAuthor(foundAuthor)
-    setIsAuthenticated(true)
-  } else {
-    alert('Incorrect password')
-  }
-}
 
   const formatTime = (dateStr: string) => {
     const date = new Date(dateStr)
@@ -126,7 +108,7 @@ const handleLogin = () => {
           className="w-full border rounded px-3 py-2"
         />
         <button
-          onClick={handleLogin}
+          onClick={logItIn}
           className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 w-full"
         >
           Login
