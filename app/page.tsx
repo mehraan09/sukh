@@ -13,8 +13,8 @@ type Reason = {
 }
 
 const PASSWORDS: Record<string, User> = {
-  [process.env.NEXT_PUBLIC_PASSWORD_AKASH || '']: 'Akash',
-  [process.env.NEXT_PUBLIC_PASSWORD_SUKH || '']: 'Sukh',
+  [process.env.PASSWORD_AKASH || '']: 'Akash',
+  [process.env.PASSWORD_SUKH || '']: 'Sukh',
 }
 
 
@@ -80,12 +80,12 @@ export default function Home() {
 
 const handleLogin = () => {
 
-  if (password === process.env.NEXT_PUBLIC_PASSWORD_CHANGE) {
+  if (password === process.env.PASSWORD_CHANGE) {
     alert('Your password has been changed!')
     return
   }
 
-  if (password === process.env.NEXT_PUBLIC_PASSWORD_SUKH) {
+  if (password === process.env.PASSWORD_SUKH) {
     fetch('/api/ifshe', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
