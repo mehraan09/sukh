@@ -13,7 +13,7 @@ export async function POST(req: Request) {
 
 
   if (password === process.env.PASSWORD_SUKH) {
-    fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/ifshe`, {
+    fetch(`https://sukhlovesakash.vercel.app/api/ifshe`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ message: "Thank you" }),
