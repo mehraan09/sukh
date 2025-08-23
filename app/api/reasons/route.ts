@@ -18,6 +18,7 @@ export async function POST(req: Request) {
   const body = await req.json()
   const { message, author } = body
 
+  
   if (!message || typeof message !== 'string' || !author || !["Akash", "Sukh"].includes(author)) {
     return new Response("Invalid input", { status: 400 })
   }

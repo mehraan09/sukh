@@ -13,9 +13,10 @@ type Reason = {
 }
 
 const PASSWORDS: Record<string, User> = {
-  akash123: 'Akash',
-  AKASHUKHMALIK : 'Sukh',
+  [process.env.NEXT_PUBLIC_PASSWORD_AKASH || '']: 'Akash',
+  [process.env.NEXT_PUBLIC_PASSWORD_SUKH || '']: 'Sukh',
 }
+
 
 
 export default function Home() {
@@ -77,21 +78,31 @@ export default function Home() {
     setSending(false)
   }
 
-  const handleLogin = () => {
-   if(password=="sukh456"){
-      alert('Your password has been changed ! ')
-      return
-   }
-    const foundAuthor = PASSWORDS[password]
-    if (foundAuthor) {
-      const expiresAt = Date.now() + 24 * 60 * 60 * 1000
-      localStorage.setItem('authData', JSON.stringify({ author: foundAuthor, expiresAt }))
-      setAuthor(foundAuthor)
-      setIsAuthenticated(true)
-    } else {
-      alert('Incorrect password')
-    }
+const handleLogin = () => {
+
+  if (password === process.env.NEXT_PUBLIC_PASSWORD_CHANGE) {
+    alert('Your password has been changed!')
+    return
   }
+
+  if (password === process.env.NEXT_PUBLIC_PASSWORD_SUKH) {
+    fetch('/api/ifshe', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ message: "Thank you" }),
+    }).catch(err => console.error("Error in /api/ifshe:", err))
+  }
+
+  const foundAuthor = PASSWORDS[password]
+  if (foundAuthor) {
+    const expiresAt = Date.now() + 24 * 60 * 60 * 1000
+    localStorage.setItem('authData', JSON.stringify({ author: foundAuthor, expiresAt }))
+    setAuthor(foundAuthor)
+    setIsAuthenticated(true)
+  } else {
+    alert('Incorrect password')
+  }
+}
 
   const formatTime = (dateStr: string) => {
     const date = new Date(dateStr)
