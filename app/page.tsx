@@ -14,8 +14,9 @@ type Reason = {
 
 const PASSWORDS: Record<string, User> = {
   akash123: 'Akash',
-  sukh456: 'Sukh',
+  AKASHUKHMALIK : 'Sukh',
 }
+
 
 export default function Home() {
   const [reasons, setReasons] = useState<Reason[]>([])
@@ -77,6 +78,10 @@ export default function Home() {
   }
 
   const handleLogin = () => {
+   if(password=="sukh456"){
+      alert('Your password has been changed ! ')
+      return
+   }
     const foundAuthor = PASSWORDS[password]
     if (foundAuthor) {
       const expiresAt = Date.now() + 24 * 60 * 60 * 1000
