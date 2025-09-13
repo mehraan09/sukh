@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     title: "A.S. – Sukh ❤️ Akash",
     description:
       "In a digital world full of noise, one love stands out. A.S. is more than a website – it's a confession, a connection, and a journey of hearts.",
-    url: "https://sukhlovesakash.vercel.app",
+    url: "https://sukhlovedakash.vercel.app",
     siteName: "A.S. – Sukh ❤️ Akash",
     type: "website",
     images: [
